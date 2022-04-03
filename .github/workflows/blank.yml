@@ -1,0 +1,21 @@
+name: updates db repo
+
+on:
+  [push,pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: updates db repo
+        env:
+          workspace_url: "https://XYZ.databricks.com" #url of the workspace
+          repo_id: "123456789000000" #id of the repo
+          branch: ${{ github.REF_NAME }} #branch to update. ref_name is the branch that triggers the workflow 
+        run: |
+         curl --location --request PATCH '${{ env.workspace_url }}/api/2.0/repos/${{ env.repo_id }}' \
+              --header 'Authorization: Bearer ${{ secrets.DB_TOKEN }}' \
+              --data-raw '{"branch": "${{ env.branch }}" }'
