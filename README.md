@@ -11,4 +11,4 @@ Once you have the above, input the above values as below:
 1. Create a GitHub Actions secret with the name "DB_TOKEN" and paste the Databricks token or service principle into it.
 2. Enter the workspace instance name and repo id to the ".github/workflow.yml"
 
-Feel free to customize the workflow to make it work for your use case. That is, you can change when events should trigger the workflow or what branch should be updated. 
+Feel free to customize the workflow to make it work for your use case. That is, you can change which events should trigger the workflow or what branch should be updated. 
